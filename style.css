@@ -6,7 +6,7 @@
 }
 body{
    
-   background: url(pics/start.jpg);
+   background: url(start.jpg);
    background-size:cover;
    transition-duration: 1s;
    transition-property: all;
@@ -14,7 +14,7 @@ body{
 }
 @media screen and (max-width:600px){  
     body{
-        background: url(pics/start2.jpg);
+        background: url(start2.jpg);
         background-size: cover;
         transition-duration: 1s;
      } 
