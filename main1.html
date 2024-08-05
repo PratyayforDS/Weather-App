@@ -12,26 +12,26 @@
     <div class="card">
         <div class="search">
             <input type="text" placeholder="Enter City Name" spellcheck="false">
-            <button><img src="icons/search.png"></button>
+            <button><img src="search.png"></button>
         </div>
         <div class="error">
             <p>Invalid City Name</p>
         </div>
         <div class="weather">
             <h2 class="city">California</h2>
-            <img src="icons/rain.png" class="weather-icon">
+            <img src="rain.png" class="weather-icon">
             <h1 class="temp">22°C</h1>
             <h2 class="weather-type">haze</h2>
             <div class="details">
                 <div class="col">
-                    <img src="icons/humidity.png">
+                    <img src="humidity.png">
                     <div>
                     <p class="Humidity">50%</p>
                     <p>Humidity</p>
                     </div>
                 </div>
                 <div class="col">
-                    <img src="icons/wind.png">
+                    <img src="wind.png">
                 <div>
                 <p class="Wind">15 kmph</p>
                 <p>Wind Speed</p>
@@ -67,32 +67,32 @@
         document.querySelector(".Wind").innerHTML=data.wind.speed + "km/h";
 
         if (data.weather[0].main == "Clouds"){
-            weathericon.src="icons/clouds.png";
-            document.querySelector("body").style.background="url(pics/cloud.jpg)";
+            weathericon.src="clouds.png";
+            document.querySelector("body").style.background="url(cloud.jpg)";
         }
         else if (data.weather[0].main == "Clear"){
-            weathericon.src="icons/clear.png";
-            document.querySelector("body").style.background="url(pics/sunny.jpg)";
+            weathericon.src="clear.png";
+            document.querySelector("body").style.background="url(sunny.jpg)";
         }
         else if (data.weather[0].main == "Rain"){
-            weathericon.src="icons/rain.png";
-            document.querySelector("body").style.background="url(pics/rainy.jpg)";
+            weathericon.src="rain.png";
+            document.querySelector("body").style.background="url(rainy.jpg)";
         }
         else if (data.weather[0].main == "Drizzle"){
-            weathericon.src="icons/drizzle.png";
-            document.querySelector("body").style.background="url(pics/drizzly.jpg)";
+            weathericon.src="drizzle.png";
+            document.querySelector("body").style.background="url(drizzly.jpg)";
         }
         else if (data.weather[0].main == "Mist"){
-            weathericon.src="icons/mist.png";
-            document.querySelector("body").style.background="url(pics/misty.avif)"; 
+            weathericon.src="mist.png";
+            document.querySelector("body").style.background="url(misty.avif)"; 
         }
         else if (data.weather[0].main == "Haze"){
-            weathericon.src="icons/haze.png";
-            document.querySelector("body").style.background="url(pics/hazy.jpg)";
+            weathericon.src="haze.png";
+            document.querySelector("body").style.background="url(hazy.jpg)";
         }
         else if (data.weather[0].main == "Thunderstorm"){
-            weathericon.src="icons/rain.png";
-            document.querySelector("body").style.background="url(pics/thunderstorm.jpg)";
+            weathericon.src="rain.png";
+            document.querySelector("body").style.background="url(thunderstorm.jpg)";
         }
 
 
