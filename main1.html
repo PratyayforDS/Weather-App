@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Weather-App</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+    
+    <div class="card">
+        <div class="search">
+            <input type="text" placeholder="Enter City Name" spellcheck="false">
+            <button><img src="icons/search.png"></button>
+        </div>
+        <div class="error">
+            <p>Invalid City Name</p>
+        </div>
+        <div class="weather">
+            <h2 class="city">California</h2>
+            <img src="icons/rain.png" class="weather-icon">
+            <h1 class="temp">22°C</h1>
+            <h2 class="weather-type">haze</h2>
+            <div class="details">
+                <div class="col">
+                    <img src="icons/humidity.png">
+                    <div>
+                    <p class="Humidity">50%</p>
+                    <p>Humidity</p>
+                    </div>
+                </div>
+                <div class="col">
+                    <img src="icons/wind.png">
+                <div>
+                <p class="Wind">15 kmph</p>
+                <p>Wind Speed</p>
+                </div>
+                </div>
+            </div>
+       
+    </div>
+</div>
+<script>
+    const apiKey="d58967f2737aa0bd2cf71e52e5323539";
+    const apiURL="https://api.openweathermap.org/data/2.5/weather?&units=metric&q=";
+    
+    const searchbox=document.querySelector(".search input");
+    const searchbtn=document.querySelector(".search button");
+    const weathericon=document.querySelector(".weather-icon");
+
+    async function checkweather (city){
+        const response =await fetch(apiURL + city + `&appid=${apiKey}`);
+
+        if (response.status == 404){
+            document.querySelector(".error").style.display="block";
+            document.querySelector(".weather").style.display="none";
+        }
+        else{
+            document.querySelector(".error").style.display="none";
+        var data = await response.json();
+        console.log(data);
+        document.querySelector(".city").innerHTML=data.name;
+        document.querySelector(".weather-type").innerHTML=data.weather[0].main;
+        document.querySelector(".temp").innerHTML=Math.round(data.main.temp) + "°C";
+        document.querySelector(".Humidity").innerHTML=data.main.humidity + "%";
+        document.querySelector(".Wind").innerHTML=data.wind.speed + "km/h";
+
+        if (data.weather[0].main == "Clouds"){
+            weathericon.src="icons/clouds.png";
+            document.querySelector("body").style.background="url(pics/cloud.jpg)";
+        }
+        else if (data.weather[0].main == "Clear"){
+            weathericon.src="icons/clear.png";
+            document.querySelector("body").style.background="url(pics/sunny.jpg)";
+        }
+        else if (data.weather[0].main == "Rain"){
+            weathericon.src="icons/rain.png";
+            document.querySelector("body").style.background="url(pics/rainy.jpg)";
+        }
+        else if (data.weather[0].main == "Drizzle"){
+            weathericon.src="icons/drizzle.png";
+            document.querySelector("body").style.background="url(pics/drizzly.jpg)";
+        }
+        else if (data.weather[0].main == "Mist"){
+            weathericon.src="icons/mist.png";
+            document.querySelector("body").style.background="url(pics/misty.avif)"; 
+        }
+        else if (data.weather[0].main == "Haze"){
+            weathericon.src="icons/haze.png";
+            document.querySelector("body").style.background="url(pics/hazy.jpg)";
+        }
+        else if (data.weather[0].main == "Thunderstorm"){
+            weathericon.src="icons/rain.png";
+            document.querySelector("body").style.background="url(pics/thunderstorm.jpg)";
+        }
+
+
+        document.querySelector(".weather").style.display="block";}
+    }
+    searchbtn.addEventListener("click",()=>{
+        
+        checkweather(searchbox.value);
+        // document.querySelector(".search input").value="";
+    })
+    
+</script>
+</body>
+</html>
+<!-- q={Kolkata}&appid={} -->
